@@ -3,6 +3,7 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, ShoppingCartIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Cart from '../features/cart0/Cart'
+import { Link } from 'react-router-dom'
 
 
 const user = {
@@ -30,6 +31,16 @@ function classNames(...classes) {
 
 const Navbar = ({children}) => {
 
+  const handelGuruBtn = async ()=>{
+    console.log("hello ");
+    
+      
+    const res = await fetch('http://localhost:8000/products');
+    const data = await res.json();
+    console.log(data);
+
+  }
+
   const [OpenCart , setOpenCart] = useState(false);
   return (
     <div className="min-h-full">
@@ -42,11 +53,13 @@ const Navbar = ({children}) => {
             <div className="flex h-16 items-center justify-between">
               <div className="flex items-center">
                 <div className="flex-shrink-0">
+                  <Link to = '/'>
                   <img
                     className="h-8 w-8"
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                     alt="Your Company"
-                  />
+                    />
+                  </Link>
                 </div>
                 <div className="hidden md:block">
                   <div className="ml-10 flex items-baseline space-x-4">
@@ -195,7 +208,9 @@ const Navbar = ({children}) => {
 
     <header className="bg-white shadow">
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold tracking-tight text-gray-900">Guru Electronics</h1>
+       <button onClick={()=>handelGuruBtn()}>
+       <h1 className="text-3xl font-bold tracking-tight text-gray-900">Guru Electronics</h1>
+        </button>
       </div>
     </header>
     <main>
