@@ -4,6 +4,8 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, ShoppingCartIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Cart from '../features/cart0/Cart'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { selectBrands } from '../features/Product_list/ProductSlice'
 
 
 const user = {
@@ -29,18 +31,20 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
+const handelGuruBtn = async ()=>{
+  console.log("hello ");
+  
+  // let val = useSelector(selectBrands);
+  // console.log(val)
+  // const res = await fetch('http://localhost:8000/products');
+  // const data = await res.json();
+  // console.log(data);
+
+}
+
 const Navbar = ({children}) => {
 
-  const handelGuruBtn = async ()=>{
-    console.log("hello ");
-    
-      
-    const res = await fetch('http://localhost:8000/products');
-    const data = await res.json();
-    console.log(data);
-
-  }
-
+  
   const [OpenCart , setOpenCart] = useState(false);
   return (
     <div className="min-h-full">
